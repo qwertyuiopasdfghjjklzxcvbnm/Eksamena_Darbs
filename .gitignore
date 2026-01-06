@@ -1,0 +1,36 @@
+# Compiled Java class files
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files (Uncomment if you don't want to commit your JARs)
+# *.jar
+# *.war
+# *.ear
+
+# Virtual machine crash logs
+hs_err_pid*
+
+# Eclipse-specific files (to be ignored to avoid conflicts)
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders/
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# If your team decides NOT to share project files (standard practice):
+# .project
+# .classpath
