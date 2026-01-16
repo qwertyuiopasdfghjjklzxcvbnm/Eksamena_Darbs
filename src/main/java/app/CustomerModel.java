@@ -8,7 +8,6 @@ public class CustomerModel extends UserModel {
     public String shippingAddress;
 
     public CustomerModel(String username, String email, String address) {
-        // Generates a random ID and sets role to CUSTOMER
         super(username, email, UserRole.CUSTOMER, UUID.randomUUID());
         this.shippingAddress = address;
     }
