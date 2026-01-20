@@ -10,9 +10,9 @@ public class ShoeProductModel {
     public int size_eu;
     public String color;
     public String material;
-    public String sku;
+    public String stockID;
 
-    public ShoeProductModel(String name, ShoeCategory category, double price, int stock, int size, String color, String material, String sku) {
+    public ShoeProductModel(String name, ShoeCategory category, double price, int stock, int size, String color, String material, String stockID) {
         this.name = name;
         this.category = category;
         this.price = price;
@@ -20,7 +20,7 @@ public class ShoeProductModel {
         this.size_eu = size;
         this.color = color;
         this.material = material;
-        this.sku = sku;
+        this.stockID = stockID;
     }
 
     public String getName() {
@@ -39,8 +39,8 @@ public class ShoeProductModel {
         return size_eu;
     }
     
-    public String getSku() {
-        return sku;
+    public String getStockID() {
+        return stockID;
     }
     
     public int getStockQuantity() {

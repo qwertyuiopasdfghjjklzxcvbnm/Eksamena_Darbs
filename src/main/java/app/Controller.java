@@ -5,8 +5,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.collections.FXCollections;
 import java.util.ArrayList;
-import java.util.UUID;
-
 import enums.ShoeCategory;
 
 public class Controller {
@@ -14,20 +12,20 @@ public class Controller {
     @FXML private TableView<ShoeProductModel> shoeTable;
     @FXML private ComboBox<String> categoryFilter;
     @FXML private Label totalLabel;
-    @FXML private TextField custNameInput, custAddressInput;
+    @FXML private TextField customerName, customerAddress;
     
     @FXML private VBox employeePanel;
-    @FXML private PasswordField adminPasswordField;
+    @FXML private PasswordField adminPassword;
 
     private ArrayList<OrderItemModel> cart = new ArrayList<>();
     private double currentTotal = 0.0;
 
     public void initialize() {
-        DataManager.loadStarterShoes();
+        DataManager.testShoes();
 
         categoryFilter.getItems().add("ALL");
-        for (ShoeCategory cat : ShoeCategory.values()) {
-            categoryFilter.getItems().add(cat.toString());
+        for (ShoeCategory category : ShoeCategory.values()) {
+            categoryFilter.getItems().add(category.toString());
         }
         categoryFilter.setValue("ALL");
 
@@ -37,19 +35,19 @@ public class Controller {
     // customer logic
 
     @FXML
-    public void handleFilter() {
+    public void Filter() {
         String selected = categoryFilter.getValue();
         ArrayList<ShoeProductModel> filtered = new ArrayList<>();
-        for (ShoeProductModel s : DataManager.allShoes) {
-            if (selected.equals("ALL") || s.getCategory().toString().equals(selected)) {
-                filtered.add(s);
+        for (ShoeProductModel shoe : DataManager.allShoes) {
+            if (selected.equals("ALL") || shoe.getCategory().toString().equals(selected)) {
+                filtered.add(shoe);
             }
         }
         refreshTable(filtered);
     }
 
     @FXML
-    public void handleAddToCart() {
+    public void AddToCart() {
         ShoeProductModel selected = shoeTable.getSelectionModel().getSelectedItem();
         if (selected != null && selected.getStockQuantity() > 0) {
             selected.stockQuantity -= 1;
@@ -57,7 +55,7 @@ public class Controller {
             currentTotal += selected.getPrice();
             totalLabel.setText("Total: €" + String.format("%.2f", currentTotal));
             
-            cart.add(new OrderItemModel(1, selected.getPrice(), null, selected.getSku()));
+            cart.add(new OrderItemModel(1, selected.getPrice(), null, selected.getStockID()));
             
             shoeTable.refresh();
         } else if (selected != null) {
@@ -66,27 +64,27 @@ public class Controller {
     }
 
     @FXML
-    public void handleCheckout() {
-        if (custNameInput.getText().isEmpty() || cart.isEmpty()) {
+    public void Checkout() {
+        if (customerName.getText().isEmpty() || cart.isEmpty()) {
             System.out.println("Kļūda: Ievadiet vārdu vai pievienojiet preci!");
             return;
         }
-        System.out.println("Pasūtījums veiksmīgs klientam: " + custNameInput.getText());
+        System.out.println("Pasūtījums veiksmīgs klientam: " + customerName.getText());
         
         cart.clear();
         currentTotal = 0;
         totalLabel.setText("Total: €0.00");
-        custNameInput.clear();
-        custAddressInput.clear();
+        customerName.clear();
+        customerAddress.clear();
     }
 
     // ghetto admin logic
 
     @FXML
-    public void handleAdminLogin() {
-        if (adminPasswordField.getText().equals("admin123")) {
+    public void AdminLogin() {
+        if (adminPassword.getText().equals("admin123")) {
             employeePanel.setVisible(true);
-            adminPasswordField.clear();
+            adminPassword.clear();
         } else {
             employeePanel.setVisible(false);
             System.out.println("Nepareiza parole!");
@@ -94,10 +92,10 @@ public class Controller {
     }
 
     @FXML
-    public void handleRestock() {
+    public void Restock() {
         ShoeProductModel selected = shoeTable.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            selected.stockQuantity += 10; // ghetto
+            selected.stockQuantity += 10; // riktigi ghetto, vajadzetu profesionalak
             shoeTable.refresh();
         }
     }

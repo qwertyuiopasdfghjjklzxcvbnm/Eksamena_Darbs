@@ -10,15 +10,15 @@
       
       <HBox alignment="CENTER_RIGHT" layoutX="580.0" layoutY="25.0" spacing="10.0">
          <children>
-            <PasswordField fx:id="adminPasswordField" prefWidth="120.0" promptText="Admin Parole" />
-            <Button onAction="#handleAdminLogin" text="Admin Login" />
+            <PasswordField fx:id="adminPassword" prefWidth="120.0" promptText="Admin Parole" />
+            <Button onAction="#AdminLogin" text="Admin Login" />
          </children>
       </HBox>
 
       <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="70.0" spacing="10.0">
          <children>
             <Label text="Filtrēt pēc kategorijas:" />
-            <ComboBox fx:id="categoryFilter" onAction="#handleFilter" prefWidth="150.0" />
+            <ComboBox fx:id="categoryFilter" onAction="#Filter" prefWidth="150.0" />
          </children>
       </HBox>
 
@@ -47,19 +47,19 @@
             <VBox spacing="10.0" style="-fx-padding: 15; -fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 10;">
                <children>
                   <Label style="-fx-font-weight: bold;" text="Pirkuma noformēšana" />
-                  <TextField fx:id="custNameInput" promptText="Vārds Uzvārds" />
-                  <TextField fx:id="custAddressInput" promptText="Adrese" />
+                  <TextField fx:id="customerName" promptText="Vārds Uzvārds" />
+                  <TextField fx:id="customerAddress" promptText="Adrese" />
                   <Separator />
                   <Label fx:id="totalLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2ecc71;" text="Total: €0.00" />
-                  <Button onAction="#handleAddToCart" prefWidth="250.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Pievienot Grozam" />
-                  <Button onAction="#handleCheckout" prefWidth="250.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Pirkt" />
+                  <Button onAction="#AddToCart" prefWidth="250.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Pievienot Grozam" />
+                  <Button onAction="#Checkout" prefWidth="250.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Pirkt" />
                </children>
             </VBox>
 
             <VBox fx:id="employeePanel" spacing="10.0" style="-fx-padding: 15; -fx-background-color: #fff5f5; -fx-border-color: #fab1a0; -fx-border-radius: 10;" visible="false">
                <children>
                   <Label style="-fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="Admin Panelis" />
-                  <Button onAction="#handleRestock" prefWidth="250.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Papildināt krājumus (+10)" />
+                  <Button onAction="#Restock" prefWidth="250.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Papildināt krājumus (+10)" />
                </children>
             </VBox>
          </children>

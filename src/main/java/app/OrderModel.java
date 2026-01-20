@@ -10,13 +10,13 @@ public class OrderModel {
     public OrderStatus status;
     public double totalAmount;
     public UUID id;
-    public UUID customerId;
+    public UUID customerID;
 
-    public OrderModel(double totalAmount, UUID customerId) {
+    public OrderModel(double totalAmount, UUID customerID) {
         this.id = UUID.randomUUID();
         this.orderDate = LocalDate.now();
         this.status = OrderStatus.PENDING;
         this.totalAmount = totalAmount;
-        this.customerId = customerId;
+        this.customerID = customerID;
     }
 }

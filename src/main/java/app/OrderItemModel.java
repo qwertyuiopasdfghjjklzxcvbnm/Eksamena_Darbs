@@ -4,16 +4,16 @@ import java.util.UUID;
 
 public class OrderItemModel {
     public int quantity;
-    public double priceAtPurchase;
+    public double price;
     public UUID id; 
     public UUID orderId; 
-    public String sku;   
+    public String stockID;   
 
-    public OrderItemModel(int quantity, double price, UUID orderId, String sku) {
+    public OrderItemModel(int quantity, double price, UUID orderId, String stockID) {
         this.id = UUID.randomUUID();
         this.quantity = quantity;
-        this.priceAtPurchase = price;
+        this.price = price;
         this.orderId = orderId;
-        this.sku = sku;
+        this.stockID = stockID;
     }
 }

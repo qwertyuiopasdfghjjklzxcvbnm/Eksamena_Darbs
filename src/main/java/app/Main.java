@@ -12,14 +12,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/gui/Scene.fxml"));
         
-        primaryStage.setTitle("Shoe Store");
+        primaryStage.setTitle("Apavu E-Veikals");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
     public static void main(String[] args) {
-        // ghetto datubaze paradas pirms gui
-        DataManager.loadStarterShoes();
+        DataManager.testShoes();
         launch(args);
     }
 }
